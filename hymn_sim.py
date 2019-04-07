@@ -4,6 +4,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 import matplotlib.pyplot as plt
+from threading import Thread
 
 ps = PorterStemmer()
 
@@ -86,23 +87,36 @@ def hymn():
     _plot = {i:0 for i in syst}
     if i in dic:
         _plot[i] = hymn[i]
-    plot(_plot)
-    hymn.plot(10)
+
+    return [hymn, _plot]
 
 
 def plot(dic):
+    fig1 = plt.figure('figure 1')
     #dic = {'hey': 2, 'hi': 3, 'ho': 6}
     po = list(range(1, len(dic)+1))
     namey = dic.keys()
     chart = dic.values()
-    plt.xticks(po, namey)
-    plt.bar(po, chart)
+    fig1 = plt.xticks(po, namey)
+    fig1= plt.bar(po, chart)
+
+
+def plot_hymn(var):
+    fig2 = plt.figure('figure 2')
+    fig2 = var.plot(10)
+
+def the_thread():
+    x = hymn()
+    var = x[0]
+    dic = x[1]
+    h2 = Thread(target=plot(dic))
+    h2.start()
+    h1 = Thread(target=plot_hymn(var))
+
+    h1.start()
     plt.show()
 
 
-def the_thread():
-
-hymn()
 
 # plot()
-
+the_thread()
