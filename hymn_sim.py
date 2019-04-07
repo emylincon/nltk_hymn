@@ -117,6 +117,9 @@ def the_thread():
     plt.show()
 
 
+def main():
+    the_thread()
 
-# plot()
-the_thread()
+
+if __name__ == "__main__":
+    main()
