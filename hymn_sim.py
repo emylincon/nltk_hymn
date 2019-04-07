@@ -82,11 +82,16 @@ def hymn():
     for i in dic:
         freq+=hymn[i]
     print('Total similarity words : {}'.format(freq))
+    syst = [' '.join(i) for i in sym]
+    _plot = {i:0 for i in syst}
+    if i in dic:
+        _plot[i] = hymn[i]
+    #print(_plot)
     hymn.plot(10)
 
 
-def plot():
-    dic = {'hey': 2, 'hi': 3, 'ho': 6}
+def plot(dic):
+    #dic = {'hey': 2, 'hi': 3, 'ho': 6}
     po = list(range(1, len(dic)+1))
     namey = dic.keys()
     chart = dic.values()
@@ -94,7 +99,7 @@ def plot():
     plt.bar(po, chart)
     plt.show()
 
-# hymn()
+hymn()
 
-plot()
+# plot()
 
