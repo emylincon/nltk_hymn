@@ -12,7 +12,7 @@ stop_words = set(stopwords.words("english"))
 
 
 def read_file():
-    s = open("C:/Users/emyli/PycharmProjects/nltk_song/hymns/amazing_grace", 'r').read()
+    s = open("C:/Users/emyli/PycharmProjects/nltk_song/hymns/give_me_joy.txt", 'r').read()
     return s
 
 
@@ -105,6 +105,7 @@ def plot_hymn(var):
     fig2 = plt.figure('figure 2')
     fig2 = var.plot(10)
 
+
 def the_thread():
     x = hymn()
     var = x[0]
@@ -118,7 +119,11 @@ def the_thread():
 
 
 def main():
-    the_thread()
+    try:
+
+        the_thread()
+    except Exception as e:
+        print(e)
 
 
 if __name__ == "__main__":
