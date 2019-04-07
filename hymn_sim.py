@@ -56,9 +56,10 @@ def word_freq(words):
 def hymn():
     sym = find_symn('love')
     hymn = nltk.FreqDist(remove_stopwords())
+    sym = [w.split('_') for w in sym]
     for i in sym:
         if i in hymn.keys():
-            print("{}: {}".format(i, hymn.freq(i)))
+            print("{}: {}".format(i, hymn[i]))
         else:
             print('no match for ', i)
     h = hymn['love']
