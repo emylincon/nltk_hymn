@@ -67,7 +67,15 @@ def hymn():
     print(h)
     hymn.plot(10)
     '''
+    dic = []
+    for i in sym:
+        lent = 0
+        for j in i:
+            if j in hymn.keys():
+                lent += 1
+            if lent == len(i):
+                dic.append(' '.join(i))
+    print(dic)
 
 
-
-print(remove_stopwords())
+hymn()
