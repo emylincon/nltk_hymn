@@ -3,6 +3,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
+import matplotlib.pyplot as plt
 
 ps = PorterStemmer()
 
@@ -80,7 +81,20 @@ def hymn():
     freq = 0
     for i in dic:
         freq+=hymn[i]
-    print('Total similarity words = {}'.format(freq))
+    print('Total similarity words : {}'.format(freq))
     hymn.plot(10)
 
-hymn()
+
+def plot():
+    dic = {'hey': 2, 'hi': 3, 'ho': 6}
+    po = list(range(1, len(dic)+1))
+    namey = dic.keys()
+    chart = dic.values()
+    plt.xticks(po, namey)
+    plt.bar(po, chart)
+    plt.show()
+
+# hymn()
+
+plot()
+
