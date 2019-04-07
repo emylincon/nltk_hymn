@@ -1,0 +1,1 @@
+To help find word count of  a given words synonyms in a text
