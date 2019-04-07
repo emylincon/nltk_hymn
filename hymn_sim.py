@@ -86,7 +86,7 @@ def hymn():
     _plot = {i:0 for i in syst}
     if i in dic:
         _plot[i] = hymn[i]
-    #print(_plot)
+    plot(_plot)
     hymn.plot(10)
 
 
@@ -98,6 +98,9 @@ def plot(dic):
     plt.xticks(po, namey)
     plt.bar(po, chart)
     plt.show()
+
+
+def the_thread():
 
 hymn()
 
