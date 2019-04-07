@@ -75,7 +75,12 @@ def hymn():
                 lent += 1
             if lent == len(i):
                 dic.append(' '.join(i))
-    print(dic)
-
+    for i in dic:
+        print('{} : {}'.format(i, hymn[i]))
+    freq = 0
+    for i in dic:
+        freq+=hymn[i]
+    print('Total similarity words = {}'.format(freq))
+    hymn.plot(10)
 
 hymn()
