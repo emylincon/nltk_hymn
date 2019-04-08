@@ -11,13 +11,14 @@ ps = PorterStemmer()
 stop_words = set(stopwords.words("english"))
 
 
-def read_file():
-    s = open("C:/Users/emyli/PycharmProjects/nltk_song/hymns/give_me_joy.txt", 'r').read()
-    return s
+def read_file(hymn):
+    global loaded_hymn
+    loaded_hymn = open("C:/Users/emyli/PycharmProjects/nltk_song/hymns/{}.txt".format(hymn), 'r').read()
+    return loaded_hymn
 
 
 def remove_stopwords():
-    enter_words = read_file()
+    enter_words = loaded_hymn
     words = word_tokenize(enter_words)
     #stemmed = [ps.stem(w) for w in words]
     filt_sen = [w for w in words if not w in stop_words]
@@ -120,7 +121,7 @@ def the_thread():
 
 def main():
     try:
-
+        read_file(input('Enter hymn: ').strip())
         the_thread()
     except Exception as e:
         print(e)
