@@ -5,10 +5,15 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 import matplotlib.pyplot as plt
 from threading import Thread
+from drawnow import *
 
 ps = PorterStemmer()
 
 stop_words = set(stopwords.words("english"))
+
+fig = plt.figure()
+ax1 = fig.add_subplot(211)
+ax2 = fig.add_subplot(212)
 
 
 def read_file(hymn):
@@ -60,16 +65,7 @@ def hymn():
     sym = find_symn('love')
     hymn = nltk.FreqDist(remove_stopwords())
     sym = [w.split('_') for w in sym]
-    '''
-    for i in sym:
-        if i in hymn.keys():
-            print("{}: {}".format(i, hymn[i]))
-        else:
-            print('no match for ', i)
-    h = hymn['love']
-    print(h)
-    hymn.plot(10)
-    '''
+
     dic = []
     for i in sym:
         lent = 0
@@ -93,18 +89,22 @@ def hymn():
 
 
 def plot(dic):
-    fig1 = plt.figure('figure 1')
-    #dic = {'hey': 2, 'hi': 3, 'ho': 6}
+    # fig1 = plt.figure('figure 1')
     po = list(range(1, len(dic)+1))
     namey = dic.keys()
     chart = dic.values()
-    fig1 = plt.xticks(po, namey)
-    fig1= plt.bar(po, chart)
+    # fig1 = plt.xticks(po, namey)
+    # fig1= plt.bar(po, chart)
+    ax1.bar(po, chart)
+    ax1.set_xticks(po, namey)
+    plt.subplot(ax1)
 
 
 def plot_hymn(var):
-    fig2 = plt.figure('figure 2')
-    fig2 = var.plot(10)
+    ax2.add_container(var.plot(10))
+    plt.subplot(ax2)
+    # fig2 = plt.figure('figure 2')
+    # fig2 = var.plot(10)
 
 
 def the_thread():
@@ -116,13 +116,16 @@ def the_thread():
     h1 = Thread(target=plot_hymn(var))
 
     h1.start()
-    plt.show()
+    #plt.show()
 
+def ppt():
+    drawnow(the_thread)
 
 def main():
     try:
         read_file(input('Enter hymn: ').strip())
-        the_thread()
+        ppt()
+        # the_thread()
     except Exception as e:
         print(e)
 
