@@ -11,10 +11,6 @@ ps = PorterStemmer()
 
 stop_words = set(stopwords.words("english"))
 
-fig = plt.figure()
-ax1 = fig.add_subplot(211)
-ax2 = fig.add_subplot(212)
-
 
 def read_file(hymn):
     global loaded_hymn
@@ -89,26 +85,19 @@ def hymn():
 
 
 def plot(dic):
-    pass
-    '''
-    # fig1 = plt.figure('figure 1')
+
+    fig1 = plt.figure('figure 1')
     po = list(range(1, len(dic)+1))
     namey = dic.keys()
     chart = dic.values()
-    # fig1 = plt.xticks(po, namey)
-    # fig1= plt.bar(po, chart)
-    ax1.bar(po, chart)
-    ax1.set_xticks(po, namey)
-    plt.subplot(ax1)
-    '''
+    fig1 = plt.xticks(po, namey)
+    fig1= plt.bar(po, chart)
 
 
 def plot_hymn(var):
 
-    ax2.add_container(var.plot(10))
-    plt.subplot(ax2)
-    #fig2 = plt.figure('figure 2')
-    #fig2 = var.plot(10)
+    fig2 = plt.figure('figure 2')
+    fig2 = var.plot(10)
 
 
 def the_thread():
@@ -120,10 +109,11 @@ def the_thread():
     h1 = Thread(target=plot_hymn(var))
 
     h1.start()
-    #plt.show()
+
 
 def ppt():
     drawnow(the_thread)
+
 
 def main():
     try:
