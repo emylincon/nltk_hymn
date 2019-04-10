@@ -58,7 +58,7 @@ def word_freq(words):
 # print(remove_stopwords())
 
 def hymn():
-    sym = find_symn('love')
+    sym = find_symn(search_word)
     hymn = nltk.FreqDist(remove_stopwords())
     sym = [w.split('_') for w in sym]
 
@@ -116,8 +116,10 @@ def ppt():
 
 
 def main():
+    global search_word
     try:
         read_file(input('Enter hymn: ').strip())
+        search_word = input('Enter Search Word: ').strip()
         ppt()
         # the_thread()
     except Exception as e:
