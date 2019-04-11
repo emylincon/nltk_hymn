@@ -23,8 +23,8 @@ def remove_stopwords():
     words = word_tokenize(enter_words)
     #stemmed = [ps.stem(w) for w in words]
     filt_sen = [w for w in words if not w in stop_words]
-    good = [w for w in filt_sen if len(w)>2]
-    better = [i for i in [w.lower() for w in good] if i!='the' and i!='and']
+    good = [w for w in filt_sen if len(w)>2]                # Removes words less than 2
+    better = [i for i in [w.lower() for w in good] if i!='the' and i!='and']        # removes 'the' and 'and'
     return better
 
 
