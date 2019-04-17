@@ -86,12 +86,12 @@ def hymn():
 
 def plot(dic):
 
-    fig1 = plt.figure('figure 1')
+    # plt.figure('figure 1')
     po = list(range(1, len(dic)+1))
     namey = dic.keys()
     chart = dic.values()
-    fig1 = plt.xticks(po, namey)
-    fig1= plt.bar(po, chart)
+    plt.xticks(po, namey)
+    plt.bar(po, chart)
 
 
 def plot_hymn(var):
@@ -121,7 +121,7 @@ def main():
         read_file(input('Enter hymn: ').strip())
         search_word = input('Enter Search Word: ').strip()
         ppt()
-        # the_thread()
+
     except Exception as e:
         print(e)
 
